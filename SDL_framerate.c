@@ -96,7 +96,7 @@ drawing too slow), the delay is zero and the delay interpolation is reset.
 
 \param manager Pointer to the framerate manager.
 */
-Uint32 SDL_framerateDelay(FPSmanager * manager)
+Uint32 SDL_getFramerateDelay(FPSmanager * manager)
 {
 	Uint32 current_ticks;
 	Uint32 target_ticks;
@@ -134,4 +134,9 @@ Uint32 SDL_framerateDelay(FPSmanager * manager)
 		manager->lastticks = SDL_GetTicks();
 	}
 	return 0;
+}
+
+void  SDL_framerateDelay(FPSmanager * manager)
+{
+	SDL_Delay(SDL_getFramerateDelay(manager));
 }
