@@ -88,11 +88,11 @@ int SDL_getFramecount(FPSmanager * manager)
 }
 
 /*!
-\brief Delay execution to maintain a constant framerate and calculate fps.
+\brief Calculate delay to maintain a constant framerate and calculate fps.
 
-Generate a delay to accomodate currently set framerate. Call once in the
-graphics/rendering loop. If the computer cannot keep up with the rate (i.e.
-drawing too slow), the delay is zero and the delay interpolation is reset.
+Calculate a delay to accomodate currently set framerate. If the computer cannot
+keep up with the rate (i.e. drawing too slow), the delay is zero and the delay
+interpolation is reset.
 
 \param manager Pointer to the framerate manager.
 */
@@ -136,6 +136,15 @@ Uint32 SDL_getFramerateDelay(FPSmanager * manager)
 	return 0;
 }
 
+/*!
+\brief Delay execution to maintain a constant framerate and calculate fps.
+
+Generate a delay to accomodate currently set framerate. Call once in the
+graphics/rendering loop. If the computer cannot keep up with the rate (i.e.
+drawing too slow), the delay is zero and the delay interpolation is reset.
+
+\param manager Pointer to the framerate manager.
+*/
 void  SDL_framerateDelay(FPSmanager * manager)
 {
 	SDL_Delay(SDL_getFramerateDelay(manager));
